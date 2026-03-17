@@ -3,6 +3,7 @@ function main() {
 }
 
 function sum(a, b) {
+    console.log("sum result:", a + b);
     return a + b;
 }
 
