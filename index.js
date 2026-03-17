@@ -3,8 +3,9 @@ function main() {
 }
 
 function sum(a, b) {
-    console.log("sum result:", a + b);
-    return a + b;
+    const result = Math.abs(a) + Math.abs(b);
+    console.log("sum result:", result);
+    return result;
 }
 
 main();
