@@ -158,13 +158,61 @@
     .clear-btn:hover {
       background: #f0f4ff;
     }
+
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-box {
+      background: #fff;
+      padding: 32px;
+      border-radius: 4px;
+      max-width: 420px;
+      width: 90%;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    }
+
+    .modal-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #222;
+    }
+
+    .modal-message {
+      margin-top: 12px;
+      font-size: 0.9rem;
+      color: #444;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+      margin-top: 24px;
+    }
+
+    .modal-actions .submit-btn,
+    .modal-actions .clear-btn {
+      margin-top: 0;
+      margin-left: 0;
+    }
   </style>
 </head>
 <body>
   <h1>Đăng ký nhận thông tin</h1>
   <p class="section-label">Thông tin liên hệ</p>
 
-  <form>
+  <form id="registration-form" onsubmit="showConfirmModal(event)">
     <div class="form-grid">
       <!-- Row 1 -->
       <div class="form-group">
@@ -244,5 +292,32 @@
     <button type="submit" class="submit-btn">Đăng ký</button>
     <button type="button" class="clear-btn" onclick="this.closest('form').reset()">Xóa form</button>
   </form>
+
+  <div class="modal-overlay" id="confirm-modal">
+    <div class="modal-box">
+      <p class="modal-title">Xác nhận đăng ký</p>
+      <p class="modal-message">Bạn có chắc chắn muốn gửi thông tin không?</p>
+      <div class="modal-actions">
+        <button type="button" class="clear-btn" onclick="cancelSubmit()">Hủy</button>
+        <button type="button" class="submit-btn" onclick="confirmSubmit()">Xác nhận</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showConfirmModal(event) {
+      event.preventDefault();
+      document.getElementById('confirm-modal').classList.add('active');
+    }
+
+    function confirmSubmit() {
+      document.getElementById('confirm-modal').classList.remove('active');
+      document.getElementById('registration-form').submit();
+    }
+
+    function cancelSubmit() {
+      document.getElementById('confirm-modal').classList.remove('active');
+    }
+  </script>
 </body>
 </html>
