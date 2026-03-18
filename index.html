@@ -141,6 +141,23 @@
     .submit-btn:hover {
       background: #002070;
     }
+
+    .clear-btn {
+      margin-top: 28px;
+      margin-left: 12px;
+      padding: 14px 40px;
+      background: #fff;
+      color: #003087;
+      border: 2px solid #003087;
+      border-radius: 2px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .clear-btn:hover {
+      background: #f0f4ff;
+    }
   </style>
 </head>
 <body>
@@ -225,6 +242,7 @@
     </div>
 
     <button type="submit" class="submit-btn">Đăng ký</button>
+    <button type="button" class="clear-btn" onclick="this.closest('form').reset()">Xóa form</button>
   </form>
 </body>
 </html>
